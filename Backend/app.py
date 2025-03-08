@@ -13,7 +13,7 @@ def generate_board():
         fill_box(board, i, i)
     solve_sudoku(board)
     complete_board = copy.deepcopy(board)
-    cells_to_remove = 50  # Medium difficulty fixed at 50 cells removed
+    cells_to_remove = 50  # setted difficulty
     cells = [(i, j) for i in range(9) for j in range(9)]
     random.shuffle(cells)
     for i, j in cells[:cells_to_remove]:
@@ -62,7 +62,7 @@ def solve_sudoku(board):
             board[row][col] = 0
     return False
 
-# API Endpoints
+# Routes
 @app.route('/generate', methods=['GET'])
 def generate():
     puzzle, solution = generate_board()
